@@ -1,0 +1,57 @@
+{
+    "name": "albert-cli",
+    "version": "0.0.1",
+    "description": "this font-end-cli",
+    "bin": {
+        "albert": "bin/albert",
+        "albert-init": "bin/albert-init",
+        "albert-list": "bin/albert-list"
+    },
+    "scripts": {
+        "test": "npm run lint && npm run e2e",
+        "lint": "eslint test/e2e/test*.js lib bin/* --env mocha",
+        "e2e": "rimraf test/e2e/mock-template-build && mocha test/e2e/test.js --slow 1000"
+    },
+    "dependencies": {
+        "async": "^2.4.0",
+        "chalk": "^2.1.0",
+        "commander": "^2.9.0",
+        "consolidate": "^0.14.0",
+        "download-git-repo": "^1.0.1",
+        "handlebars": "^4.0.5",
+        "inquirer": "^3.3.0",
+        "metalsmith": "^2.1.0",
+        "minimatch": "^3.0.0",
+        "multimatch": "^2.1.0",
+        "ora": "^1.3.0",
+        "read-metadata": "^1.0.0",
+        "request": "^2.67.0",
+        "rimraf": "^2.5.0",
+        "semver": "^5.1.0",
+        "tildify": "^1.2.0",
+        "uid": "0.0.2",
+        "user-home": "^2.0.0",
+        "validate-npm-package-name": "^3.0.0",
+        "node-fetch": "^1.7.3"
+    },
+    "engines": {
+        "node": ">=6.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ZhouYanlang/albert-cli.git"
+    },
+    "keywords": [
+        "cli",
+        "font-end",
+        "vue",
+        "react",
+        "angular"
+    ],
+    "author": "itattoo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ZhouYanlang/albert-cli/issues"
+    },
+    "homepage": "https://github.com/ZhouYanlang/albert-cli#readme"
+}
