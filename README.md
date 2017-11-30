@@ -1,1 +1,3 @@
-# sREADME.md
+# README.md
+
+# this is font-cli
