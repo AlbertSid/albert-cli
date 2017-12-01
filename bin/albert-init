@@ -78,10 +78,12 @@ help()
  */
 // 假设是albert init react my-project,第一个参数是react
 // 获取init 后的第一个参数
-let template = program.args[0]
-const hasSlash = template.indexOf('/') > -1
-const rawName = program.args[1]
-const inPlace = !rawName || rawName === '.'
+// 模板名称
+let template = program.args[0];
+const hasSlash = template.indexOf('/') > -1;
+//项目名称
+const rawName = program.args[1];
+const inPlace = !rawName || rawName === '.';
 
 //path.relative（）方法根据当前工作目录返回相对路径。 
 //如果从每个解析到相同的路径（在每个路径上调用path.resolve（）之后），返回零长度的字符串。
@@ -105,10 +107,11 @@ if (program.offline) {
  * Padding.
  */
 
-console.log()
 process.on('exit', () => {
-  console.log()
+  console.log('Padding')
 })
+
+
 
 if (exists(to)) {
   //询问选择
@@ -119,79 +122,79 @@ if (exists(to)) {
       : 'Target directory exists. Continue?',
     name: 'ok'
   }]).then(answers => {
-    if (answers.ok) {
-      run()
-    }
+    // if (answers.ok) {
+    //   run()
+    // }
   }).catch(logger.fatal)
 } else {
-  run()
+  // run()
 }
 
 /**
  * Check, download and generate the project.
  */
 
-function run () {
-  // check if template is local 检查要下载的模版是否是本地路径
-  if (isLocalPath(template)) {
-    const templatePath = getTemplatePath(template)
-    //信息输出
-    if (exists(templatePath)) {
-      generate(name, templatePath, to, err => {
-        if (err) logger.fatal(err)
-        console.log()
-        logger.success('Generated "%s".', name)
-      })
-    } else {
-      logger.fatal('Local template "%s" not found.', template)
-    }
-  } else {
-    //检查版本并输出信息
-    checkVersion(() => {
-      if (!hasSlash) {
-        // use official templates
-        const officialTemplate = 'vuejs-templates/' + template
-        if (template.indexOf('#') !== -1) {
-          downloadAndGenerate(officialTemplate)
-        } else {
-          if (template.indexOf('-2.0') !== -1) {
-            warnings.v2SuffixTemplatesDeprecated(template, inPlace ? '' : name)
-            return
-          }
+// function run () {
+//   // check if template is local 检查要下载的模版是否是本地路径
+//   if (isLocalPath(template)) {
+//     const templatePath = getTemplatePath(template)
+//     //信息输出
+//     if (exists(templatePath)) {
+//       generate(name, templatePath, to, err => {
+//         if (err) logger.fatal(err)
+//         console.log()
+//         logger.success('Generated "%s".', name)
+//       })
+//     } else {
+//       logger.fatal('Local template "%s" not found.', template)
+//     }
+//   } else {
+//     //检查版本并输出信息
+//     checkVersion(() => {
+//       if (!hasSlash) {
+//         // use official templates
+//         const officialTemplate = 'vuejs-templates/' + template
+//         if (template.indexOf('#') !== -1) {
+//           downloadAndGenerate(officialTemplate)
+//         } else {
+//           if (template.indexOf('-2.0') !== -1) {
+//             warnings.v2SuffixTemplatesDeprecated(template, inPlace ? '' : name)
+//             return
+//           }
 
-          // warnings.v2BranchIsNowDefault(template, inPlace ? '' : name)
-          downloadAndGenerate(officialTemplate)
-        }
-      } else {
-        downloadAndGenerate(template)
-      }
-    })
-  }
-}
+//           // warnings.v2BranchIsNowDefault(template, inPlace ? '' : name)
+//           downloadAndGenerate(officialTemplate)
+//         }
+//       } else {
+//         downloadAndGenerate(template)
+//       }
+//     })
+//   }
+// }
 
-/**
- * Download a generate from a template repo.
- * 从模版仓库下载模版
- * @param {String} template
- */
+// /**
+//  * Download a generate from a template repo.
+//  * 从模版仓库下载模版
+//  * @param {String} template
+//  */
 
-function downloadAndGenerate (template) {
-  //启动控制台loading
-  const spinner = ora('downloading template')
-  spinner.start()
-  // 如果存在本地模版则移除
-  // Remove if local template exists
-  if (exists(tmp)) rm(tmp)
-  //下载
-  download(template, tmp, { clone }, err => {
-    spinner.stop()
-    //日志
-    if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-    //控制台打印出模版信息，比如 Generated "my-project".
-    generate(name, tmp, to, err => {
-      if (err) logger.fatal(err)
-      console.log()
-      logger.success('Generated "%s".', name)
-    })
-  })
-}
+// function downloadAndGenerate (template) {
+//   //启动控制台loading
+//   const spinner = ora('downloading template')
+//   spinner.start()
+//   // 如果存在本地模版则移除
+//   // Remove if local template exists
+//   if (exists(tmp)) rm(tmp)
+//   //下载
+//   download(template, tmp, { clone }, err => {
+//     spinner.stop()
+//     //日志
+//     if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
+//     //控制台打印出模版信息，比如 Generated "my-project".
+//     generate(name, tmp, to, err => {
+//       if (err) logger.fatal(err)
+//       console.log()
+//       logger.success('Generated "%s".', name)
+//     })
+//   })
+// }

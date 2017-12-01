@@ -1,0 +1,87 @@
+{
+	"Font-end":{
+		//http://www.zhangxinxu.com/wordpress/2017/05/electron-node-js-desktop-application-experience/
+		"PC-App":{
+			"heX":{
+				//http://techblog.youdao.com/?p=685
+				//https://yq.aliyun.com/articles/234153
+				//http://hex.youdao.com/zh-cn/tutorial/index.html
+			},
+			"NW.JS":{
+				//http://www.infoq.com/cn/articles/using-node-webkit-to-build-desktop-applications-part1
+			},
+			"Electron":{
+				"Vue+Electron":{
+					//https://halfrost.com/vue_electron/
+				},
+				"React+Electron":{
+					//
+				},
+				"Angular+Electron":{
+
+				},
+			}
+		},
+		"Mobile-App":{
+			//http://www.codeceo.com/article/9-app-javascript-framework.html
+			//http://www.jianshu.com/p/c697952ec870
+			"ReactNative":{//react
+				"Ignite":{},
+				"ReactNative-cli":{}
+			},
+			"NativeScript":{//angular
+				
+			},
+			"Weex":{//vue
+
+			},
+			"Ionic":{//cordova
+
+			},
+			"SenchaTouch":{
+
+			},
+			"Ratchet":{//http://goratchet.com/
+
+			},
+			"Mui":{
+
+			}
+
+		},
+		"Wep":{
+			"React":{
+				"React+Redux+Router":{},
+				"React+Mobe+Router":{},
+				"React+Router":{},
+			},
+			"Vue":{
+				"vue+vue-router":{},
+				"vue+vue-router+vuex":{}
+			},
+			"Angular":{
+				"gulp+angular1.3":{},
+				"webpack+angular1.3":{},
+				"gulp+angular1.6":{},
+				"webpack+angular1.6":{},
+				"gulp+angular2+typescript":{},
+				"webpack+angular2+typescript":{},
+			},
+		},
+	},
+	"server":{
+		"Python":{
+			"Flask":{}
+		},
+		"Node":{
+			"Koa":{},
+			"Express":{}
+		},
+		"PHP":{
+
+		},
+		"Go":{
+
+		},
+	}
+}
